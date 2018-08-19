@@ -1,2 +1,4 @@
-# checkvist-kotlin
-Checkvist Open Api exposed as Kotlin Interfaces/data classes.
+# Checkvist Api
+
+Model and operations implemented according [Checkvist Open Api](https://checkvist.com/auth/api) in kotlin.
+
