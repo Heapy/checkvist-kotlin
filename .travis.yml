@@ -1,0 +1,35 @@
+language: java
+
+jdk:
+  - openjdk11
+
+script:
+  - ./gradlew check
+
+deploy:
+  - provider: script
+    script: bash deploy.sh tag
+    skip_cleanup: true
+    on:
+      tags: true
+      repo: Heapy/checkvist-kotlin
+      jdk: openjdk11
+  - provider: script
+    script: bash deploy.sh dev
+    skip_cleanup: true
+    on:
+      tags: false
+      repo: Heapy/checkvist-kotlin
+      jdk: openjdk11
+
+
+before_cache:
+  - rm -f  "${HOME}/.gradle/caches/modules-2/modules-2.lock"
+  - rm -f  "${HOME}/.gradle/caches/*/fileHashes/fileHashes.lock"
+  - rm -rf "${HOME}/.gradle/caches/*/plugin-resolution/"
+
+cache:
+  directories:
+    - "${HOME}/.gradle/caches/"
+    - "${HOME}/.gradle/wrapper/"
+
