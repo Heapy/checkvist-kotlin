@@ -1,17 +1,16 @@
-import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
+import Versions.kotlinVersion
+import Versions.ktorVersion
 
 group = "io.heapy.checkvist.common"
 
 apply(from = "$rootDir/publish.gradle")
 
 plugins {
-    kotlin("jvm").version("1.3.10")
+    kotlin("jvm").version(Versions.kotlinVersion)
 }
 
-val ktorVersion: String by project
-
 dependencies {
-    compileOnly(kotlin("stdlib-jdk8", getKotlinPluginVersion()))
+    compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
 
     compile("io.ktor:ktor-client-core-jvm:$ktorVersion")
 }
